@@ -55,6 +55,15 @@ export default function App() {
     
     experience: [
       {
+        title: "Ketua UUmum",
+        organization: "HIMAMIRA",
+        period: "Februari 2026 - Saat ini",
+        details: [
+          "Memimpin dan mengoordinasikan seluruh program kerja, kegiatan, serta anggota himpunan.",
+          "Bertanggung jawab atas pengambilan keputusan strategis dan pengembangan organisasi.",
+        ]
+      },
+      {
         title: "Kepala Divisi Publikasi Dan Dokumentasi",
         organization: "CONNECTION 2026",
         period: "April 2026 - Saat ini",
