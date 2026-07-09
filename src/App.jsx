@@ -16,7 +16,7 @@ import {
 } from 'lucide-react';
 import BlurText from './components/BlurText';
 import GlowCard from './components/GlowCard';
-import Ferrofluid from './components/Ferrofluid';
+import Threads from './Threads';
 import LogoLoop from './components/LogoLoop';
 import {
   SiFigma,
@@ -59,7 +59,7 @@ export default function App() {
         organization: "HIMAMIRA",
         period: "Februari 2026 - Saat ini",
         details: [
-          "Memimpin dan mengoordinasikan seluruh program kerja, kegiatan, serta anggota himpunan.",
+          "Memimpin dan mengkoordinasikan seluruh program kerja, kegiatan, serta anggota himpunan.",
           "Bertanggung jawab atas pengambilan keputusan strategis dan pengembangan organisasi.",
         ]
       },
@@ -120,7 +120,9 @@ export default function App() {
         { name: "Web Security", level: "Menengah" },
         { name: "Linux Server", level: "Menengah" },
         { name: "Adobe Photoshop", level: "Menengah" },
-        { name: "Figma", level: "Mahir" }
+        { name: "Figma", level: "Mahir" },
+        { name: "Canva", level: "Mahir" },
+        { name: "Capcut", level: "Menengah" },
       ],
       nonTechnical: [
         "Komunikasi yang Baik",
@@ -135,43 +137,44 @@ export default function App() {
   };
 
   const techLogos = [
-    { node: <SiFigma size={32} />, title: "Figma", href: "https://www.figma.com" },
-    { node: <SiLinux size={32} />, title: "Linux", href: "https://www.linux.org" },
-    { node: <SiReact size={32} />, title: "React", href: "https://react.dev" },
-    { node: <SiJavascript size={32} />, title: "JavaScript", href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
-    { node: <SiHtml5 size={32} />, title: "HTML5", href: "https://developer.mozilla.org/en-US/docs/Web/HTML" },
+    { node: <SiFigma size={32} color="#fff" />, title: "Figma", href: "https://www.figma.com" },
+    { node: <SiLinux size={32} color="#fff" />, title: "Linux", href: "https://www.linux.org" },
+    { node: <SiReact size={32} color="#fff" />, title: "React", href: "https://react.dev" },
+    { node: <SiJavascript size={32} color="#fff" />, title: "JavaScript", href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+    { node: <SiHtml5 size={32} color="#fff" />, title: "HTML5", href: "https://developer.mozilla.org/en-US/docs/Web/HTML" },
   ];
 
   return (
-    <div style={{ minHeight: '100vh', position: 'relative', zIndex: 1 }}>
-      {/* Ferrofluid Background */}
-      <div style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100vw',
-        height: '100vh',
-        zIndex: 0,
-        pointerEvents: 'auto'
-      }}>
-        <Ferrofluid
-          colors={['#06B6D4', '#8B5CF6', '#0EA5E9']}
-          backgroundColor="#03010A"
-          speed={0.4}
-          scale={1.2}
-          turbulence={1.2}
-          fluidity={0.12}
-          rimWidth={0.25}
-          sharpness={3}
-          shimmer={1.2}
-          glow={2.5}
-          flowDirection="down"
-          opacity={1}
-          mouseInteraction={true}
-          mouseStrength={1.2}
-          mouseRadius={0.35}
-        />
-      </div>
+    <div style={{ minHeight: '100vh', position: 'relative', zIndex: 1, backgroundColor: '#03010A' }}>
+      
+      {/* BACKGROUND THREADS BARU */}
+   <div style={{
+     position: 'absolute',
+     top: 0,
+     left: 0,
+     width: '100%',
+     height: '100vh',
+     zIndex: 0,
+     overflow: 'hidden',
+     background: '#03010A' // Memastikan warna dasarnya gelap agar Threads terlihat
+   }}>
+     <Threads
+       color={[0.0, 0.94, 1.0]} // Warna Cyan, diubah dari [1,1,1] (putih) agar cocok dengan tema
+       amplitude={1.2}
+       distance={0}
+       enableMouseInteraction={true}
+     />
+     {/* Gradien pemudar bawah */}
+     <div style={{
+       position: 'absolute',
+       bottom: 0,
+       left: 0,
+       width: '100%',
+       height: '250px',
+       background: 'linear-gradient(to bottom, transparent, #03010A)',
+       pointerEvents: 'none'
+     }} />
+   </div>
 
       {/* Floating Navbar */}
       <nav style={{
@@ -201,7 +204,7 @@ export default function App() {
           fontSize: '1.2rem',
           cursor: 'pointer'
         }} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-          MAA.
+        SHEA.
         </div>
         <div style={{ display: 'flex', gap: '20px' }}>
           {['tentang', 'pengalaman', 'keahlian', 'pendidikan', 'kontak'].map((item) => (
@@ -231,7 +234,8 @@ export default function App() {
         justifyContent: 'center',
         paddingTop: '160px',
         textAlign: 'center',
-        position: 'relative'
+        position: 'relative',
+        zIndex: 10 // Pastikan teks di depan background
       }}>
         <div className="container">
           <div style={{
@@ -310,22 +314,25 @@ export default function App() {
         </div>
       </section>
 
+      
       {/* Tech Stack LogoLoop Section */}
       <section style={{
         padding: '30px 0',
-        background: 'rgba(6, 8, 18, 0.4)',
-        borderTop: '1px solid var(--border-color)',
-        borderBottom: '1px solid var(--border-color)',
+        background: 'rgba(255, 255, 255, 0.03)', /* Transparan dengan sedikit rona putih */
+        backdropFilter: 'blur(12px)', /* Efek kaca buram (frosted glass) yang mewah */
+        WebkitBackdropFilter: 'blur(12px)', /* Dukungan untuk browser Safari */
+        borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
         position: 'relative',
         zIndex: 5,
         overflow: 'hidden'
       }}>
         <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <span style={{
-            fontSize: '0.8rem',
+            fontSize: '1.25rem',
             textTransform: 'uppercase',
             letterSpacing: '0.15em',
-            color: 'var(--text-muted)',
+            color: '#085369', /* Teks "Teknologi & Tools" diubah jadi Cyan terang agar senada */
             marginBottom: '16px',
             fontWeight: 600
           }}>
@@ -337,8 +344,7 @@ export default function App() {
             direction="left"
             logoHeight={32}
             gap={60}
-            fadeOut={true}
-            fadeOutColor="#060812"
+            fadeOut={false} 
             scaleOnHover={true}
             ariaLabel="Teknologi dan Tools"
           />
