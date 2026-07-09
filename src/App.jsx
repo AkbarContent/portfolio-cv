@@ -55,7 +55,7 @@ export default function App() {
     
     experience: [
       {
-        title: "Ketua UUmum",
+        title: "Ketua Umum",
         organization: "HIMAMIRA",
         period: "Februari 2026 - Saat ini",
         details: [
